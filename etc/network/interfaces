@@ -1,4 +1,5 @@
 # Example cfg for interface eth0
+# with static v4 address
 #
 auto eth0
 allow-hotplug eth0
@@ -9,3 +10,10 @@ iface eth0 inet static
     broadcast 192.0.2.255
     gateway 192.0.2.1
     dns-nameservers 192.0.2.1 8.8.8.8 8.8.4.4
+
+# Example cfg for interface eth1
+# enabled as dhcp-client
+#
+auto eth1
+allow-hotplug eth1
+iface eth1 inet dhcp
