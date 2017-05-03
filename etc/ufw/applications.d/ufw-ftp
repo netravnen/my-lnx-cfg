@@ -1,0 +1,4 @@
+[FTP]
+title=FTP server
+description=File Transfer Protocol hosted server ruleset
+ports=20:21/tcp
