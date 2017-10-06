@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ssh_config="$HOME/.ssh/config"
+
+rm $ssh_config ; touch $ssh_config ; chmod 0600 $ssh_config
+
+for f in $ssh_config.*.safe
+do
+	# change file $f to u+rw only
+	chmod 0600 $f
+
+	printf "\n\n# FILE: $f\n\n" >> $HOME/.ssh/config
+	cat $f >> $HOME/.ssh/config
+done

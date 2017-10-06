@@ -1,0 +1,5 @@
+#!/bin/bash
+
+read ipv4address
+
+echo $ipv4address | awk -F. '{ OFS = FS; for ( i = 1; i <= NF; i++ ) $i = sprintf("%03d",$i); print }'

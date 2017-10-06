@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Tutorials used
+#   i: http://www.howtogeek.com/howto/30184/10-ways-to-generate-a-random-password-from-the-command-line/
+#  ii: http://www.tldp.org/LDP/abs/html/complexfunct.html
+
+# Input vars
+inputNumber=$1
+
+# Params
+predefinedPwLength=20
+
+# Regex for number detection.
+re='^[0-9]+$'
+
+# Detect if number param is empty. Else define the value to a default one.
+if [ -z "$inputNumber" ]
+then
+	inputNumber=$predefinedPwLength
+fi
+
+# Detect if $inputNumber is a real number.
+# If not. Warn the user and quit this script.
+if ! [[ $inputNumber=~$re ]]
+then
+	echo "error: $inputNumber is NOT a number" >&2
+	exit 1
+fi
+
+< /dev/urandom tr -dc '12345!@#$%qwertQWERTasdfgASDFGzxcvbZXCVB' | head -c"$inputNumber" ; echo ""

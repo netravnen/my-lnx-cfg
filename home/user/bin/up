@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if [ -z "$2" ]; then
+        echo
+        echo Wait for IP to respond to ping, then do COMMAND
+        echo Usage:
+        echo $0 COMMAND IP
+        echo
+        echo Example:
+        echo -e "\033[1;31m$0 telnet 192.168.1.1\033[0m"
+        echo
+        exit
+fi
+
+if [ ! `ping -c 1 $2 > /dev/null` ]; then
+        echo "Invoked `date`"
+        printf "\nWaiting for $2 to come up."
+        until ping -c 1 $2 > /dev/null
+        do
+                printf "."
+                sleep 4;
+        done
+        printf "\n\033[1mSuccess at `date`!\033[0m\n"
+fi
+$*

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Kills detached byobu sessions
+
+screen -ls | /bin/grep "Detached" | awk '{print $1}' | xargs -i screen -X -S {} quit

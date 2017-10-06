@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# -c   for how many packets to send
+# -i   Wait  interval seconds between sending each packet.
+# -l   ping sends that many packets not waiting for reply.  Only the super-user may select preload more than 3.
+# -n   Numeric output only.  No attempt will be made to lookup symbolic names for host addresses.
+# -t   Set the IP Time to Live.
+/bin/ping -i 0.2 -l 3 -n -W 20 "$*" 

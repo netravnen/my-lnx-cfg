@@ -1,0 +1,12 @@
+#!/bin/bash
+
+for HOST in "ny-sm2" "ny-cm1" "ny-cm2" "tacacs-cpe1" "jah.zensystems.dk"
+do
+  if [[ $HOSTNAME =~ ^ny-(cm1|cm2)$ ]] && [[ $HOST =~ ^jah.zensystems.dk$ ]]
+  then
+    Jumphost='ny-sm2'
+    /usr/bin/ssh -tt $USER@$Jumphost /usr/bin/ssh -tt $USER@$HOST ssh-keygen -R "$*"
+  else
+    /usr/bin/ssh $HOST -t "ssh-keygen -R \"$*\""
+  fi
+done

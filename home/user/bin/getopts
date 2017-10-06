@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+pages=  length=  time=
+
+while getopts p:l:t: opt; do
+  case $opt in
+  p)
+      pages=$OPTARG
+      ;;
+  l)
+      length=$OPTARG
+      ;;
+  t)
+      time=$OPTARG
+      ;;
+  esac
+done
+
+shift $((OPTIND - 1))
+
+echo pages $pages
+
+if (length=""); then
+  length=5
+fi
+
+echo length $length
+echo time $time
+echo $*
