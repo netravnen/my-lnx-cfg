@@ -1,0 +1,139 @@
+alias userhomedirsize="du -sh /home/* | sort -h | sed -n '/denied/!p'"
+
+alias pmap='nmap --max-retries 5  --host-timeout 8s -v -sP'
+alias nvsp=pmap
+
+# make pw script
+alias pwmake=$HOME/bin/makepasswords
+
+# Short for a customized grep command [[ contains certain extra parametres by default ]]
+alias grep-c='grep --initial-tab --ignore-case --color=auto --line-number'
+alias grep-e='grep --initial-tab --ignore-case --color=auto --line-number --extended-regexp'
+
+# See a list of running shells
+alias shel='ps -p $$'
+
+# Perl script from the large GRAY internet capable of calculating IPv4 address domains, ips, subnets size
+alias ipcalc="$HOME/bin/ipcalc -b"
+
+# Kills running byobu sessions
+alias killb=$HOME/bin/kill_detached_byobu_sessions
+
+# View user logins from the previous month
+alias lastm='last -f /var/log/wtmp.1'
+
+# Remove known SSH keys
+alias rmsshkey=$HOME/bin/remove-ssh-key
+
+alias cls=clear
+
+#-----------------------------------------------------------------------+
+#                                                                       |
+# http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html |
+#                                                                       |
+#-----------------------------------------------------------------------+
+
+##
+## A note about privileged access
+##
+
+# if user is not root, pass all commands via sudo #
+if [ $UID -ne 0 ]; then
+    alias reboot='sudo reboot'
+    alias update='sudo apt-get upgrade'
+fi
+
+##
+## 1: Control ls command output
+##
+
+# Colorize the ls output ##
+alias ls='ls --color=auto'
+ 
+## Use a long listing format ##
+alias ll='ls -la'
+ 
+## Show hidden files ##
+alias l.='ls -d .* --color=auto'
+
+##
+## 2: Control cd command behavior
+##
+
+# get rid of command not found ##
+alias cd..='cd ..'
+ 
+## a quick way to get out of current directory ##
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+##
+## 6: Colorize diff output
+##
+
+# install  colordiff package :)
+alias diff='colordiff'
+
+##
+## 9: Create a new set of commands
+##
+
+alias path='echo -e ${PATH//:/\\n}'
+alias now='date +"%T"'
+alias nowtime=now
+alias nowdate='date +"%d-%m-%Y"'
+
+##
+## 12: Show open ports
+##
+
+alias ports='netstat -tulanp'
+
+##
+## 20: Pass halt/reboot via sudo
+##
+
+# reboot / halt / poweroff
+alias reboot='sudo /sbin/reboot'
+alias poweroff='sudo /sbin/poweroff'
+alias halt='sudo /sbin/halt'
+alias shutdown='sudo /sbin/shutdown'
+
+##
+## 25: Get system memory, cpu usage, and gpu memory info quickly
+##
+
+# pass options to free ## 
+alias meminfo='free -m -l -t'
+ 
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+ 
+# get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+ 
+# Get server cpu info ##
+alias cpuinfo='lscpu'
+ 
+# older system use /proc/cpuinfo ##
+#alias cpuinfo='less /proc/cpuinfo' ##
+ 
+# get GPU ram on desktop / laptop## 
+alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
+
+##
+## 27 Resume wget by default
+##
+
+# this one saved my butt so many times ##
+alias wget='wget -c'
+
+# shorthand for doing ripe database lookups
+alias riper='whois -r -h whois.ripe.net -B'
+alias ripe='whois -h whois.ripe.net -B'
