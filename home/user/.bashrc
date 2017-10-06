@@ -55,8 +55,8 @@ export PS1="\n$BROWN{{ $_date $_time }} {{ $_shell }} {{ $_os $_arch $_ver }}$NO
 $BROWN$_username@$NO_COLOR$RED$_hostname$NO_COLOR $BROWN$_currentdir >$NO_COLOR "
 
 # Add bash aliases.
-if [ -f $HOME/.bash_aliases/.*.aliases ] ; then
-  . $HOME/.bash_aliases/bash.aliases
+if [ -f $HOME/.bash_aliases/*.aliases ] ; then
+  . $HOME/.bash_aliases/*.aliases
 fi
 
 # === NIXCRAFT: Top 20 OpenSSH Server Best Security Practices ===
