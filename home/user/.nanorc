@@ -1,0 +1,5 @@
+# show line numbers
+set const
+
+# use syntax highlighting from https://github.com/nanorc/nanorc
+include ~/.nano/syntax/ALL.nanorc
